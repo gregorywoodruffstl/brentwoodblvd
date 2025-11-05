@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brentwood Boulevard | St. Louis Premier Business Directory</title>
+    <meta name="description" content="Discover businesses, restaurants, and services along historic Brentwood Boulevard in St. Louis, Missouri. Your complete guide to shopping, dining, and services.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>BRENTWOOD BOULEVARD</h1>
+                <p class="tagline">St. Louis • Est. 1920s • Where History Meets Commerce</p>
+            </div>
+            <nav class="nav">
+                <a href="#directory">Business Directory</a>
+                <a href="#demographics">Demographics</a>
+                <a href="#history">History</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Discover Brentwood Boulevard</h2>
+            <p>Your complete guide to businesses, dining, and services along St. Louis' premier retail corridor</p>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search businesses, restaurants, services...">
+                <button id="searchBtn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Local Businesses</p>
+            </div>
+            <div class="stat-card">
+                <h3>3 Tiers</h3>
+                <p>Coverage Area</p>
+            </div>
+            <div class="stat-card">
+                <h3>100+</h3>
+                <p>Years of History</p>
+            </div>
+            <div class="stat-card">
+                <h3>$89K</h3>
+                <p>Median Income</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section id="directory" class="filters">
+        <div class="container">
+            <h2>Browse Businesses</h2>
+            <div class="filter-controls">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="restaurant">Restaurants</option>
+                    <option value="retail">Retail & Shopping</option>
+                    <option value="services">Services</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="automotive">Automotive</option>
+                </select>
+                
+                <select id="levelFilter">
+                    <option value="">All Tiers</option>
+                    <option value="1">Tier 1 - On Brentwood Blvd</option>
+                    <option value="2">Tier 2 - Intersecting Streets</option>
+                    <option value="3">Tier 3 - Secondary Streets</option>
+                </select>
+                
+                <button id="resetBtn">Reset Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Directory -->
+    <section class="directory">
+        <div class="container">
+            <div id="businessGrid" class="business-grid">
+                <!-- Businesses loaded via JavaScript -->
+                <div class="loading">Loading businesses...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demographics Section -->
+    <section id="demographics" class="demographics">
+        <div class="container">
+            <h2>Then & Now: 100 Years of Change</h2>
+            <p class="section-subtitle">Census data comparison: 1920 vs 2020</p>
+            
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3>Population Growth</h3>
+                    <div class="demo-comparison">
+                        <div class="demo-year">
+                            <span class="year">1920</span>
+                            <span class="value">18,500</span>
+                        </div>
+                        <div class="demo-arrow">→</div>
+                        <div class="demo-year">
+                            <span class="year">2020</span>
+                            <span class="value">47,200</span>
+                        </div>
+                    </div>
+                    <div class="demo-change">+155% Growth</div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>Median Income</h3>
+                    <div class="demo-comparison">
+                        <div class="demo-year">
+                            <span class="year">1920</span>
+                            <span class="value">$35K*</span>
+                        </div>
+                        <div class="demo-arrow">→</div>
+                        <div class="demo-year">
+                            <span class="year">2020</span>
+                            <span class="value">$89.5K</span>
+                        </div>
+                    </div>
+                    <div class="demo-change">*Adjusted for inflation</div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>Home Values</h3>
+                    <div class="demo-comparison">
+                        <div class="demo-year">
+                            <span class="year">1920</span>
+                            <span class="value">$95K*</span>
+                        </div>
+                        <div class="demo-arrow">→</div>
+                        <div class="demo-year">
+                            <span class="year">2020</span>
+                            <span class="value">$425K</span>
+                        </div>
+                    </div>
+                    <div class="demo-change">+347% Growth</div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>Transportation</h3>
+                    <div class="demo-comparison">
+                        <div class="demo-year">
+                            <span class="year">1920</span>
+                            <span class="value-small">Streetcars<br>Horses</span>
+                        </div>
+                        <div class="demo-arrow">→</div>
+                        <div class="demo-year">
+                            <span class="year">2020</span>
+                            <span class="value-small">I-64/I-40<br>MetroLink</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="history">
+        <div class="container">
+            <h2>Historic Manchester Trail</h2>
+            <p class="section-subtitle">The only westward route from St. Louis without crossing a major river</p>
+            
+            <div class="history-content">
+                <div class="history-text">
+                    <h3>A Legacy of Commerce</h3>
+                    <p>
+                        In the late 1800s, the Manchester Trail represented something remarkable: 
+                        the <strong>only westward route from St. Louis</strong> that didn't require 
+                        crossing the Meramec, Mississippi, or Missouri Rivers.
+                    </p>
+                    <p>
+                        This strategic advantage made the trail—and later Manchester Road—the 
+                        preferred route for commerce and settlement. As Brentwood Boulevard 
+                        developed along this corridor, it naturally became a center for retail, 
+                        dining, and services.
+                    </p>
+                    <p>
+                        The historic settlement of <strong>Maddenville</strong> flourished here 
+                        in the 1920s, establishing patterns of development that continue today.
+                    </p>
+                    <h4>Historic Country Clubs</h4>
+                    <ul>
+                        <li><strong>St. Louis Country Club</strong> (1892) - 3.2 miles</li>
+                        <li><strong>Bellerive Country Club</strong> (1897) - 6.8 miles</li>
+                        <li><strong>Westwood Country Club</strong> (1908) - 2.1 miles</li>
+                        <li><strong>Old Warson Country Club</strong> (1954) - 5.1 miles</li>
+                    </ul>
+                </div>
+                <div class="history-image">
+                    <div class="placeholder-image">
+                        <p>Historic Manchester Trail Photograph</p>
+                        <small>(Missouri History Museum Archives)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About This Directory</h2>
+            <p>
+                BrentwoodBoulevard.com is your comprehensive guide to businesses and services 
+                along historic Brentwood Boulevard in St. Louis, Missouri. We provide detailed 
+                information about retailers, restaurants, services, and attractions across 
+                three coverage tiers.
+            </p>
+            <div class="tier-info">
+                <div class="tier">
+                    <h3>🏢 Tier 1</h3>
+                    <p>Businesses directly on Brentwood Boulevard</p>
+                </div>
+                <div class="tier">
+                    <h3>🏪 Tier 2</h3>
+                    <p>Businesses on streets intersecting Brentwood Blvd</p>
+                </div>
+                <div class="tier">
+                    <h3>🏬 Tier 3</h3>
+                    <p>Businesses on secondary connecting streets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>The Maddenville Network</h4>
+                    <p>A Cloud & Secure Limited Digital Property</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Sites</h4>
+                    <ul>
+                        <li><a href="https://brentwoodboulevard.com">BrentwoodBoulevard.com</a></li>
+                        <li><a href="https://brentwoodblvd.com">BrentwoodBlvd.com</a></li>
+                        <li><a href="https://maddenvillenights.com">MaddenvilleNights.com</a></li>
+                        <li><a href="https://maddenvillegazette.com">MaddenvilleGazette.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#directory">Business Directory</a></li>
+                        <li><a href="#demographics">Demographics</a></li>
+                        <li><a href="#history">History</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cloud & Secure Limited. All rights reserved.</p>
+                <p>Data sources: Census.gov, Missouri History Museum, Local Business Records</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

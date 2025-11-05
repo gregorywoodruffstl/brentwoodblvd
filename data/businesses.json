@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "name": "The Galleria at Brentwood",
+    "category": "Shopping Center",
+    "address": "2405 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 863-1626",
+    "website": "https://www.thegalleriaatstlouis.com",
+    "tier": 1,
+    "affiliate": true,
+    "promotion": "Dozens of premier retailers and dining options under one roof"
+  },
+  {
+    "id": 2,
+    "name": "Starbucks Coffee",
+    "category": "Coffee Shop",
+    "address": "8657 Eager Rd, Brentwood, MO 63144",
+    "phone": "(314) 962-8700",
+    "website": "https://www.starbucks.com",
+    "tier": 1,
+    "affiliate": false
+  },
+  {
+    "id": 3,
+    "name": "Target",
+    "category": "Department Store",
+    "address": "2401 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 863-8808",
+    "website": "https://www.target.com",
+    "tier": 1,
+    "affiliate": true,
+    "promotion": "Circle rewards members save 5% every day"
+  },
+  {
+    "id": 4,
+    "name": "Whole Foods Market",
+    "category": "Grocery Store",
+    "address": "8601 Eager Rd, Brentwood, MO 63144",
+    "phone": "(314) 962-0012",
+    "website": "https://www.wholefoodsmarket.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 5,
+    "name": "PetSmart",
+    "category": "Pet Store",
+    "address": "2390 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 968-1900",
+    "website": "https://www.petsmart.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 6,
+    "name": "Panera Bread",
+    "category": "Restaurant",
+    "address": "8631 Eager Rd, Brentwood, MO 63144",
+    "phone": "(314) 962-0123",
+    "website": "https://www.panerabread.com",
+    "tier": 1,
+    "affiliate": false
+  },
+  {
+    "id": 7,
+    "name": "Chipotle Mexican Grill",
+    "category": "Restaurant",
+    "address": "2369 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 781-8200",
+    "website": "https://www.chipotle.com",
+    "tier": 1,
+    "affiliate": false
+  },
+  {
+    "id": 8,
+    "name": "The Cheesecake Factory",
+    "category": "Restaurant",
+    "address": "1701 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 432-6900",
+    "website": "https://www.thecheesecakefactory.com",
+    "tier": 2,
+    "affiliate": false,
+    "promotion": "Happy hour specials Monday-Friday 4-6pm"
+  },
+  {
+    "id": 9,
+    "name": "Cooper's Hawk Winery & Restaurant",
+    "category": "Restaurant",
+    "address": "2477 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 863-2220",
+    "website": "https://www.chwinery.com",
+    "tier": 1,
+    "affiliate": false
+  },
+  {
+    "id": 10,
+    "name": "ULTA Beauty",
+    "category": "Beauty Store",
+    "address": "2395 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 963-4800",
+    "website": "https://www.ulta.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 11,
+    "name": "Dick's Sporting Goods",
+    "category": "Sporting Goods",
+    "address": "2341 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 962-9900",
+    "website": "https://www.dickssportinggoods.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 12,
+    "name": "Barnes & Noble",
+    "category": "Bookstore",
+    "address": "2467 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 962-2665",
+    "website": "https://www.barnesandnoble.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 13,
+    "name": "HomeGoods",
+    "category": "Home Goods",
+    "address": "2409 S Brentwood Blvd, Brentwood, MO 63144",
+    "phone": "(314) 962-2100",
+    "website": "https://www.homegoods.com",
+    "tier": 1,
+    "affiliate": false
+  },
+  {
+    "id": 14,
+    "name": "REI Co-op",
+    "category": "Outdoor Recreation",
+    "address": "1703 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 918-1004",
+    "website": "https://www.rei.com",
+    "tier": 2,
+    "affiliate": true,
+    "promotion": "Members get 10% back on most purchases annually"
+  },
+  {
+    "id": 15,
+    "name": "West Elm",
+    "category": "Furniture Store",
+    "address": "1661 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 932-9356",
+    "website": "https://www.westelm.com",
+    "tier": 2,
+    "affiliate": true
+  },
+  {
+    "id": 16,
+    "name": "Pottery Barn",
+    "category": "Furniture Store",
+    "address": "1653 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 932-0606",
+    "website": "https://www.potterybarn.com",
+    "tier": 2,
+    "affiliate": true
+  },
+  {
+    "id": 17,
+    "name": "Williams Sonoma",
+    "category": "Kitchen Store",
+    "address": "1649 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 432-1510",
+    "website": "https://www.williams-sonoma.com",
+    "tier": 2,
+    "affiliate": true
+  },
+  {
+    "id": 18,
+    "name": "Yard House",
+    "category": "Restaurant",
+    "address": "1660 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 439-9273",
+    "website": "https://www.yardhouse.com",
+    "tier": 2,
+    "affiliate": false
+  },
+  {
+    "id": 19,
+    "name": "P.F. Chang's",
+    "category": "Restaurant",
+    "address": "1681 Clarkson Rd, Chesterfield, MO 63017",
+    "phone": "(636) 532-8852",
+    "website": "https://www.pfchangs.com",
+    "tier": 3,
+    "affiliate": false
+  },
+  {
+    "id": 20,
+    "name": "Brio Italian Grille",
+    "category": "Restaurant",
+    "address": "1601 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 432-2746",
+    "website": "https://www.brioitalian.com",
+    "tier": 2,
+    "affiliate": false
+  },
+  {
+    "id": 21,
+    "name": "Apple Store",
+    "category": "Electronics",
+    "address": "2481 S Brentwood Blvd, St. Louis, MO 63144",
+    "phone": "(314) 963-0480",
+    "website": "https://www.apple.com",
+    "tier": 1,
+    "affiliate": true,
+    "promotion": "Schedule your free Today at Apple session"
+  },
+  {
+    "id": 22,
+    "name": "Nordstrom Rack",
+    "category": "Department Store",
+    "address": "2469 S Brentwood Blvd, St. Louis, MO 63144",
+    "phone": "(314) 963-2121",
+    "website": "https://www.nordstromrack.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 23,
+    "name": "Container Store",
+    "category": "Home Organization",
+    "address": "1701 Clarkson Rd, Chesterfield, MO 63017",
+    "phone": "(636) 536-8700",
+    "website": "https://www.containerstore.com",
+    "tier": 3,
+    "affiliate": true
+  },
+  {
+    "id": 24,
+    "name": "Sephora",
+    "category": "Beauty Store",
+    "address": "2383 S Brentwood Blvd, St. Louis, MO 63144",
+    "phone": "(314) 963-0660",
+    "website": "https://www.sephora.com",
+    "tier": 1,
+    "affiliate": true
+  },
+  {
+    "id": 25,
+    "name": "Crate & Barrel",
+    "category": "Furniture Store",
+    "address": "1625 S Lindbergh Blvd, St. Louis, MO 63131",
+    "phone": "(314) 918-9292",
+    "website": "https://www.crateandbarrel.com",
+    "tier": 2,
+    "affiliate": true
+  }
+]
