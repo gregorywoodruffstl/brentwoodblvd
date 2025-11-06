@@ -171,19 +171,31 @@ body {
 .filters h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: #1a1a2e;
 }
 
+.filter-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
 .filter-controls {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.filter-row {
     display: flex;
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.filter-controls select,
-.filter-controls button {
+.filter-select {
     padding: 12px 20px;
     font-size: 1rem;
     border: 2px solid #ddd;
@@ -191,28 +203,43 @@ body {
     background: white;
     cursor: pointer;
     transition: all 0.3s;
+    min-width: 220px;
 }
 
-.filter-controls select {
-    min-width: 200px;
-}
-
-.filter-controls select:hover,
-.filter-controls select:focus {
+.filter-select:hover,
+.filter-select:focus {
     border-color: #667eea;
     outline: none;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
 }
 
-#resetBtn {
+.reset-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: 2px solid #f0a500;
+    border-radius: 8px;
     background: #f0a500;
     color: white;
-    border-color: #f0a500;
     font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-#resetBtn:hover {
+.reset-btn:hover {
     background: #ffb81c;
     border-color: #ffb81c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(240, 165, 0, 0.3);
+}
+
+.results-info {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-weight: 600;
+    color: #667eea;
 }
 
 /* Business Directory */
@@ -242,6 +269,24 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
+.business-card.featured {
+    border: 3px solid #f0a500;
+    background: linear-gradient(135deg, #fff9e6 0%, white 100%);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: linear-gradient(135deg, #f0a500, #ffb81c);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(240, 165, 0, 0.4);
+}
+
 .business-tier {
     position: absolute;
     top: 15px;
@@ -258,6 +303,7 @@ body {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: #1a1a2e;
+    margin-top: 10px;
 }
 
 .business-category {
@@ -270,7 +316,11 @@ body {
     margin-bottom: 15px;
 }
 
-.business-address {
+.business-address,
+.business-phone,
+.business-email,
+.business-website,
+.business-hours {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -278,35 +328,31 @@ body {
     color: #555;
 }
 
-.business-phone,
-.business-website {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
 .business-phone a,
+.business-email a,
 .business-website a {
     color: #667eea;
     text-decoration: none;
+    font-weight: 500;
 }
 
 .business-phone a:hover,
+.business-email a:hover,
 .business-website a:hover {
     text-decoration: underline;
 }
 
 .business-promotion {
-    background: #fff3cd;
+    background: linear-gradient(135deg, #fff3cd, #ffe999);
     border-left: 4px solid #f0a500;
-    padding: 10px 15px;
+    padding: 12px 15px;
     margin-top: 15px;
     border-radius: 4px;
+    font-size: 0.95rem;
 }
 
 .business-promotion strong {
-    color: #f0a500;
+    color: #d48806;
 }
 
 .affiliate-badge {

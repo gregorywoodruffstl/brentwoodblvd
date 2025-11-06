@@ -8,14 +8,16 @@ const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 const categoryFilter = document.getElementById('categoryFilter');
 const levelFilter = document.getElementById('levelFilter');
+const statusFilter = document.getElementById('statusFilter');
 const resetBtn = document.getElementById('resetBtn');
+const resultsCount = document.getElementById('resultsCount');
 
 // Load business data when page loads
 document.addEventListener('DOMContentLoaded', async () => {
     await loadBusinessData();
     displayBusinesses(allBusinesses);
-    populateFilters();
     setupEventListeners();
+    updateResultsCount();
 });
 
 // Load business data from JSON file
@@ -35,13 +37,17 @@ async function loadBusinessData() {
 
 // Display businesses in the grid
 function displayBusinesses(businesses) {
+    displayedBusinesses = businesses;
+    
     if (businesses.length === 0) {
-        businessGrid.innerHTML = '<div class="no-results">No businesses found matching your criteria. Try adjusting your filters.</div>';
+        businessGrid.innerHTML = '<div class="no-results">📭 No businesses found matching your criteria. Try adjusting your filters.</div>';
+        updateResultsCount();
         return;
     }
 
-    businessGrid.innerHTML = businesses.map(business => `
-        <div class="business-card" data-id="${business.id}">
+    businessGrid.innerHTML = businesses.map((business, index) => `
+        <div class="business-card ${business.featured ? 'featured' : ''}" data-id="${business.id}">
+            ${business.featured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
             <span class="business-tier">Tier ${business.tier}</span>
             <h3 class="business-name">${business.name}</h3>
             <span class="business-category">${business.category}</span>
@@ -52,24 +58,32 @@ function displayBusinesses(businesses) {
             
             ${business.phone ? `
                 <div class="business-phone">
-                    📞 <a href="tel:${business.phone.replace(/[^0-9]/g, '')}">${business.phone}</a>
+                    📞 <a href="tel:${business.phone.replace(/[^0-9]/g, '')}" onclick="event.stopPropagation()">${business.phone}</a>
+                </div>
+            ` : ''}
+            
+            ${business.email ? `
+                <div class="business-email">
+                    ✉️ <a href="mailto:${business.email}" onclick="event.stopPropagation()">Email</a>
                 </div>
             ` : ''}
             
             ${business.website ? `
                 <div class="business-website">
-                    🌐 <a href="${business.website}" target="_blank" rel="noopener">Visit Website</a>
+                    🌐 <a href="${business.website}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Visit Website</a>
+                </div>
+            ` : ''}
+            
+            ${business.hours ? `
+                <div class="business-hours">
+                    🕐 ${business.hours}
                 </div>
             ` : ''}
             
             ${business.promotion ? `
                 <div class="business-promotion">
-                    <strong>Special Offer:</strong> ${business.promotion}
+                    🎁 <strong>Special:</strong> ${business.promotion}
                 </div>
-            ` : ''}
-            
-            ${business.affiliate ? `
-                <span class="affiliate-badge">Featured Partner</span>
             ` : ''}
         </div>
     `).join('');
@@ -87,6 +101,22 @@ function displayBusinesses(businesses) {
             }
         });
     });
+    
+    updateResultsCount();
+}
+
+// Update results counter
+function updateResultsCount() {
+    if (!resultsCount) return;
+    
+    const total = allBusinesses.length;
+    const showing = displayedBusinesses.length;
+    
+    if (showing === total) {
+        resultsCount.textContent = `Showing all ${total} businesses`;
+    } else {
+        resultsCount.textContent = `Showing ${showing} of ${total} businesses`;
+    }
 }
 
 // Populate category and level filters
@@ -107,35 +137,49 @@ function filterBusinesses() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const selectedCategory = categoryFilter.value;
     const selectedLevel = levelFilter.value;
+    const selectedStatus = statusFilter.value;
 
-    displayedBusinesses = allBusinesses.filter(business => {
-        // Search filter
+    let filtered = allBusinesses.filter(business => {
+        // Search filter - search across multiple fields
         const matchesSearch = searchTerm === '' || 
             business.name.toLowerCase().includes(searchTerm) ||
-            business.category.toLowerCase().includes(searchTerm) ||
-            business.address.toLowerCase().includes(searchTerm);
+            (business.category && business.category.toLowerCase().includes(searchTerm)) ||
+            (business.address && business.address.toLowerCase().includes(searchTerm)) ||
+            (business.description && business.description.toLowerCase().includes(searchTerm));
 
         // Category filter
-        const matchesCategory = selectedCategory === 'all' || 
+        const matchesCategory = selectedCategory === '' || 
             business.category === selectedCategory;
 
         // Tier filter
-        const matchesTier = selectedLevel === 'all' || 
+        const matchesTier = selectedLevel === '' || 
             business.tier.toString() === selectedLevel;
+            
+        // Status filter
+        const matchesStatus = selectedStatus === '' ||
+            (selectedStatus === 'featured' && business.featured) ||
+            (selectedStatus === 'open' && isOpenNow(business));
 
-        return matchesSearch && matchesCategory && matchesTier;
+        return matchesSearch && matchesCategory && matchesTier && matchesStatus;
     });
 
-    displayBusinesses(displayedBusinesses);
+    displayBusinesses(filtered);
+}
+
+// Check if business is currently open (placeholder - needs real hours data)
+function isOpenNow(business) {
+    // This would check actual business hours
+    // For now, return true as placeholder
+    return true;
 }
 
 // Reset all filters
 function resetFilters() {
     searchInput.value = '';
-    categoryFilter.value = 'all';
-    levelFilter.value = 'all';
-    displayedBusinesses = [...allBusinesses];
-    displayBusinesses(displayedBusinesses);
+    categoryFilter.value = '';
+    levelFilter.value = '';
+    if (statusFilter) statusFilter.value = '';
+    displayBusinesses(allBusinesses);
 }
 
 // Setup event listeners
@@ -157,7 +201,8 @@ function setupEventListeners() {
 
     categoryFilter.addEventListener('change', filterBusinesses);
     levelFilter.addEventListener('change', filterBusinesses);
-    resetBtn.addEventListener('click', resetFilters);
+    if (statusFilter) statusFilter.addEventListener('change', filterBusinesses);
+    updateResultsCount();
 }
 
 // Smooth scroll for navigation links

@@ -59,29 +59,45 @@
         </div>
     </section>
 
-    <!-- Filters -->
+    <!-- Enhanced Filters & Search -->
     <section id="directory" class="filters">
         <div class="container">
             <h2>Browse Businesses</h2>
+            <p class="filter-subtitle">🔍 Use advanced filters to find exactly what you're looking for</p>
+            
             <div class="filter-controls">
-                <select id="categoryFilter">
-                    <option value="">All Categories</option>
-                    <option value="restaurant">Restaurants</option>
-                    <option value="retail">Retail & Shopping</option>
-                    <option value="services">Services</option>
-                    <option value="healthcare">Healthcare</option>
-                    <option value="entertainment">Entertainment</option>
-                    <option value="automotive">Automotive</option>
-                </select>
+                <div class="filter-row">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="restaurant">🍽️ Restaurants</option>
+                        <option value="retail">🛍️ Retail & Shopping</option>
+                        <option value="services">⚙️ Services</option>
+                        <option value="healthcare">🏥 Healthcare</option>
+                        <option value="entertainment">🎭 Entertainment</option>
+                        <option value="automotive">🚗 Automotive</option>
+                        <option value="professional">💼 Professional Services</option>
+                        <option value="home">🏠 Home & Garden</option>
+                    </select>
+                    
+                    <select id="levelFilter" class="filter-select">
+                        <option value="">All Tiers</option>
+                        <option value="1">🏛️ Tier 1 - On Brentwood Blvd</option>
+                        <option value="2">🏪 Tier 2 - Intersecting Streets</option>
+                        <option value="3">🏘️ Tier 3 - Secondary Streets</option>
+                    </select>
+                    
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="open">✅ Open Now</option>
+                        <option value="featured">⭐ Featured</option>
+                    </select>
+                    
+                    <button id="resetBtn" class="reset-btn">🔄 Reset</button>
+                </div>
                 
-                <select id="levelFilter">
-                    <option value="">All Tiers</option>
-                    <option value="1">Tier 1 - On Brentwood Blvd</option>
-                    <option value="2">Tier 2 - Intersecting Streets</option>
-                    <option value="3">Tier 3 - Secondary Streets</option>
-                </select>
-                
-                <button id="resetBtn">Reset Filters</button>
+                <div class="results-info">
+                    <span id="resultsCount">Showing all businesses</span>
+                </div>
             </div>
         </div>
     </section>

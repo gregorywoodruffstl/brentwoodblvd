@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../MaddenvilleGazette"
+		},
+		{
+			"path": "../MaddenvilleNights"
 		}
 	],
 	"settings": {}
