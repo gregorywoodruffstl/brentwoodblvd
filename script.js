@@ -260,3 +260,176 @@ document.addEventListener('click', (e) => {
         trackEvent('Business', 'Click', businessName);
     }
 });
+
+// ============== PHOTO GALLERY ==============
+
+const photos = [
+    {
+        id: 1,
+        title: "Brentwood Boulevard - 1925",
+        description: "Main street view showing early commercial development",
+        era: "1920s",
+        image: "https://via.placeholder.com/400x300/8B4513/FFFFFF?text=1925+Brentwood+Blvd",
+        category: "streetview"
+    },
+    {
+        id: 2,
+        title: "Corner Store - 1928",
+        description: "Traditional corner grocery and general store",
+        era: "1920s",
+        image: "https://via.placeholder.com/400x300/6B8E23/FFFFFF?text=1928+Corner+Store",
+        category: "business"
+    },
+    {
+        id: 3,
+        title: "Street Parade - 1922",
+        description: "Community celebration along the Boulevard",
+        era: "1920s",
+        image: "https://via.placeholder.com/400x300/4682B4/FFFFFF?text=1922+Parade",
+        category: "event"
+    },
+    {
+        id: 4,
+        title: "Brentwood Boulevard - 1956",
+        description: "Post-war expansion and new storefronts",
+        era: "1950s",
+        image: "https://via.placeholder.com/400x300/CD5C5C/FFFFFF?text=1956+Boulevard",
+        category: "streetview"
+    },
+    {
+        id: 5,
+        title: "Drive-In Restaurant - 1960",
+        description: "Classic car culture on Brentwood Boulevard",
+        era: "1950s",
+        image: "https://via.placeholder.com/400x300/20B2AA/FFFFFF?text=1960+Drive-In",
+        category: "business"
+    },
+    {
+        id: 6,
+        title: "Shopping Center - 1965",
+        description: "Modern retail plaza opens on the Boulevard",
+        era: "1950s",
+        image: "https://via.placeholder.com/400x300/9370DB/FFFFFF?text=1965+Shopping",
+        category: "business"
+    },
+    {
+        id: 7,
+        title: "Brentwood Boulevard Today",
+        description: "Thriving commercial corridor with modern businesses",
+        era: "modern",
+        image: "https://via.placeholder.com/400x300/2F4F4F/FFFFFF?text=Modern+Boulevard",
+        category: "streetview"
+    },
+    {
+        id: 8,
+        title: "Local Restaurant - 2024",
+        description: "Contemporary dining on the Boulevard",
+        era: "modern",
+        image: "https://via.placeholder.com/400x300/B8860B/FFFFFF?text=2024+Restaurant",
+        category: "business"
+    },
+    {
+        id: 9,
+        title: "Community Event - 2023",
+        description: "Annual street festival celebrating local businesses",
+        era: "modern",
+        image: "https://via.placeholder.com/400x300/DC143C/FFFFFF?text=2023+Festival",
+        category: "event"
+    }
+];
+
+let currentEra = 'all';
+
+function loadPhotoGallery() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid) return;
+    
+    displayPhotos(currentEra);
+    
+    // Tab switching
+    const tabs = document.querySelectorAll('.gallery-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentEra = tab.dataset.era;
+            displayPhotos(currentEra);
+        });
+    });
+}
+
+function displayPhotos(era) {
+    const galleryGrid = document.getElementById('galleryGrid');
+    const filteredPhotos = era === 'all' 
+        ? photos 
+        : photos.filter(p => p.era === era);
+    
+    galleryGrid.innerHTML = filteredPhotos.map(photo => `
+        <div class="gallery-item" data-id="${photo.id}">
+            <div class="gallery-image">
+                <img src="${photo.image}" alt="${photo.title}" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-info">
+                        <h4>${photo.title}</h4>
+                        <p>${photo.description}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-caption">
+                <span class="era-tag">${formatEra(photo.era)}</span>
+            </div>
+        </div>
+    `).join('');
+    
+    // Add click handlers for lightbox (future enhancement)
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const photoId = parseInt(item.dataset.id);
+            const photo = photos.find(p => p.id === photoId);
+            openLightbox(photo);
+        });
+    });
+}
+
+function formatEra(era) {
+    const eraMap = {
+        '1920s': '📷 1920s',
+        '1950s': '📸 1950s-60s',
+        'modern': '📱 Modern',
+        'all': '📷 All Eras'
+    };
+    return eraMap[era] || era;
+}
+
+function openLightbox(photo) {
+    // Create lightbox modal
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img src="${photo.image}" alt="${photo.title}">
+            <div class="lightbox-caption">
+                <h3>${photo.title}</h3>
+                <p>${photo.description}</p>
+                <span class="lightbox-era">${formatEra(photo.era)}</span>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(lightbox);
+    document.body.style.overflow = 'hidden';
+    
+    // Close lightbox
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.className === 'lightbox-close') {
+            document.body.removeChild(lightbox);
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// Initialize gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    loadPhotoGallery();
+});
