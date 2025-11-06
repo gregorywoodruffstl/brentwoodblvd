@@ -965,3 +965,179 @@ body {
         font-size: 2rem;
     }
 }
+
+/* ===================================
+   EVENTS CALENDAR
+   =================================== */
+
+.events-calendar {
+    background: linear-gradient(135deg, #e8f4f8, #f0f8ff);
+    padding: 80px 20px;
+}
+
+.events-calendar h2 {
+    color: #1a1a2e;
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.events-intro {
+    text-align: center;
+    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.events-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.event-filter-btn {
+    padding: 12px 24px;
+    background: white;
+    border: 2px solid #f0a500;
+    border-radius: 25px;
+    color: #1a1a2e;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.event-filter-btn:hover {
+    background: #f0a500;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(240,165,0,0.3);
+}
+
+.event-filter-btn.active {
+    background: #f0a500;
+    color: white;
+    box-shadow: 0 5px 15px rgba(240,165,0,0.3);
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 5px solid #f0a500;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.event-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.event-header h3 {
+    color: #1a1a2e;
+    font-size: 1.5rem;
+    margin: 0;
+    flex: 1;
+}
+
+.event-category {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.event-category.business {
+    background: #4CAF50;
+    color: white;
+}
+
+.event-category.community {
+    background: #2196F3;
+    color: white;
+}
+
+.event-category.entertainment {
+    background: #9C27B0;
+    color: white;
+}
+
+.event-category.historical {
+    background: #FF9800;
+    color: white;
+}
+
+.event-details {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.event-details p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.event-date {
+    font-weight: 600;
+    color: #1a1a2e !important;
+}
+
+.event-description {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Responsive Events */
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .events-filter {
+        gap: 10px;
+    }
+    
+    .event-filter-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .event-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .event-category {
+        margin-top: 10px;
+    }
+}
+

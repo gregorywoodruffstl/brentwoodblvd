@@ -1,6 +1,7 @@
 // Business data will be loaded from businesses.json
 let allBusinesses = [];
 let displayedBusinesses = [];
+let allEvents = [];
 
 // DOM elements
 const businessGrid = document.getElementById('businessGrid');
@@ -11,11 +12,14 @@ const levelFilter = document.getElementById('levelFilter');
 const statusFilter = document.getElementById('statusFilter');
 const resetBtn = document.getElementById('resetBtn');
 const resultsCount = document.getElementById('resultsCount');
+const eventsGrid = document.getElementById('eventsGrid');
 
 // Load business data when page loads
 document.addEventListener('DOMContentLoaded', async () => {
     await loadBusinessData();
+    await loadEventsData();
     displayBusinesses(allBusinesses);
+    displayEvents('all');
     setupEventListeners();
     updateResultsCount();
 });
@@ -428,6 +432,87 @@ function openLightbox(photo) {
         }
     });
 }
+
+// ===================================
+// EVENTS CALENDAR
+// ===================================
+
+// Load events data from JSON file
+async function loadEventsData() {
+    try {
+        const response = await fetch('data/events.json');
+        if (!response.ok) {
+            throw new Error('Failed to load events data');
+        }
+        const data = await response.json();
+        allEvents = data.events;
+    } catch (error) {
+        console.error('Error loading events data:', error);
+        if (eventsGrid) {
+            eventsGrid.innerHTML = '<div class="no-results">Unable to load events. Please try again later.</div>';
+        }
+    }
+}
+
+// Display events with optional category filter
+function displayEvents(category = 'all') {
+    if (!eventsGrid) return;
+    
+    // Filter events by category and site (show brentwood and community events)
+    let filteredEvents = allEvents.filter(event => 
+        (category === 'all' || event.category === category) &&
+        (event.site === 'brentwood' || event.category === 'community' || event.category === 'historical')
+    );
+    
+    // Sort events by date
+    filteredEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    if (filteredEvents.length === 0) {
+        eventsGrid.innerHTML = '<div class="no-results">📅 No events found in this category.</div>';
+        return;
+    }
+    
+    eventsGrid.innerHTML = filteredEvents.map(event => `
+        <div class="event-card" data-category="${event.category}">
+            <div class="event-icon">${event.image}</div>
+            <div class="event-content">
+                <div class="event-header">
+                    <h3>${event.title}</h3>
+                    <span class="event-category ${event.category}">${event.category}</span>
+                </div>
+                <div class="event-details">
+                    <p class="event-date">📅 ${formatEventDate(event.date)}</p>
+                    <p class="event-time">🕒 ${event.time}</p>
+                    <p class="event-location">📍 ${event.location}</p>
+                    <p class="event-price">💵 ${event.price}</p>
+                </div>
+                <p class="event-description">${event.description}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Format event date to readable format
+function formatEventDate(dateString) {
+    const date = new Date(dateString);
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+// Setup event filter buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const eventFilterBtns = document.querySelectorAll('.event-filter-btn');
+    eventFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            eventFilterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            // Display filtered events
+            displayEvents(btn.dataset.category);
+        });
+    });
+});
 
 // Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
