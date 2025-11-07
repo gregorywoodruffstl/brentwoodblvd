@@ -518,3 +518,122 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadPhotoGallery();
 });
+
+// ============== PHOTO GALLERY ==============
+
+const galleryPhotos = [
+    {
+        id: 1,
+        title: "Brentwood Boulevard - 1925",
+        description: "Historic view of Brentwood Boulevard looking south from Manchester Road",
+        era: "1920s",
+        source: "Library of Congress",
+        type: "historical",
+        thumbnail: "data/photos/placeholder-blvd-1920s.jpg",
+        full: "data/photos/placeholder-blvd-1920s.jpg"
+    },
+    {
+        id: 2,
+        title: "Maddenville Settlement - Early 1900s",
+        description: "Original Maddenville settlement buildings along the boulevard",
+        era: "1920s",
+        source: "Library of Congress",
+        type: "historical",
+        thumbnail: "data/photos/placeholder-maddenville.jpg",
+        full: "data/photos/placeholder-maddenville.jpg"
+    },
+    {
+        id: 3,
+        title: "Streetcar Service - 1920s",
+        description: "Electric streetcar on Brentwood Boulevard",
+        era: "1920s",
+        source: "Library of Congress",
+        type: "historical",
+        thumbnail: "data/photos/placeholder-streetcar.jpg",
+        full: "data/photos/placeholder-streetcar.jpg"
+    },
+    {
+        id: 4,
+        title: "Modern Brentwood Boulevard",
+        description: "Contemporary view of thriving business district",
+        era: "modern",
+        source: "AI Generated Visualization",
+        type: "ai-generated",
+        thumbnail: "data/photos/placeholder-modern.jpg",
+        full: "data/photos/placeholder-modern.jpg"
+    },
+    {
+        id: 5,
+        title: "Retail Shops - 1950s",
+        description: "Mid-century shopping along the boulevard",
+        era: "1950s",
+        source: "Library of Congress",
+        type: "historical",
+        thumbnail: "data/photos/placeholder-1950s.jpg",
+        full: "data/photos/placeholder-1950s.jpg"
+    },
+    {
+        id: 6,
+        title: "Historic Manchester Road Intersection",
+        description: "The iconic intersection of Brentwood and Manchester",
+        era: "1920s",
+        source: "AI Generated Historical Recreation",
+        type: "ai-generated",
+        thumbnail: "data/photos/placeholder-intersection.jpg",
+        full: "data/photos/placeholder-intersection.jpg"
+    }
+];
+
+let currentGalleryFilter = 'all';
+
+function loadPhotoGallery() {
+    displayGalleryPhotos(currentGalleryFilter);
+    setupGalleryFilters();
+}
+
+function setupGalleryFilters() {
+    const galleryTabs = document.querySelectorAll('.gallery-tab');
+    galleryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            galleryTabs.forEach(t => t.classList.remove('active'));
+            // Add active to clicked tab
+            tab.classList.add('active');
+            // Filter gallery
+            const era = tab.dataset.era;
+            currentGalleryFilter = era;
+            displayGalleryPhotos(era);
+        });
+    });
+}
+
+function displayGalleryPhotos(filter = 'all') {
+    const galleryContainer = document.getElementById('galleryGrid');
+    if (!galleryContainer) return;
+    
+    let filteredPhotos = galleryPhotos;
+    if (filter !== 'all') {
+        filteredPhotos = galleryPhotos.filter(photo => photo.era === filter);
+    }
+    
+    galleryContainer.innerHTML = filteredPhotos.map(photo => `
+        <div class="gallery-item" data-era="${photo.era}" data-type="${photo.type}">
+            <div class="gallery-image-container">
+                <div class="gallery-placeholder">
+                    <span class="placeholder-icon">📸</span>
+                    <p>Photo Coming Soon</p>
+                </div>
+            </div>
+            <div class="gallery-caption">
+                <h4>${photo.title}</h4>
+                <p>${photo.description}</p>
+                <div class="gallery-meta">
+                    <span class="era-badge">${photo.era}</span>
+                    <span class="source-badge ${photo.type === 'ai-generated' ? 'ai-badge' : ''}">
+                        ${photo.type === 'ai-generated' ? '🤖 ' : '📚 '}${photo.source}
+                    </span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
